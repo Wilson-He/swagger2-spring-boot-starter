@@ -207,89 +207,89 @@
   ],
   "groups": [
     {
-      "sourceType": "io.github.wilson.swagger.SwaggerAutoConfiguration",
+      "sourceType": "io.github.swagger.SwaggerAutoConfiguration",
       "name": "swagger",
-      "type": "io.github.wilson.swagger.SwaggerAutoConfiguration"
+      "type": "io.github.swagger.SwaggerAutoConfiguration"
     }
   ],
   "properties": [
     {
-      "sourceType": "io.github.wilson.swagger.SwaggerAutoConfiguration",
+      "sourceType": "io.github.swagger.SwaggerAutoConfiguration",
       "name": "swagger.security-configuration",
-      "type": "io.github.wilson.swagger.properties.SecurityConfigurationProperties"
+      "type": "io.github.swagger.properties.SecurityConfigurationProperties"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityConfigurationProperties",
+      "sourceType": "io.github.swagger.properties.SecurityConfigurationProperties",
       "name": "swagger.security-configuration.client-id",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityConfigurationProperties",
+      "sourceType": "io.github.swagger.properties.SecurityConfigurationProperties",
       "name": "swagger.security-configuration.client-secret",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityConfigurationProperties",
+      "sourceType": "io.github.swagger.properties.SecurityConfigurationProperties",
       "name": "swagger.security-configuration.realm",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityConfigurationProperties",
+      "sourceType": "io.github.swagger.properties.SecurityConfigurationProperties",
       "name": "swagger.security-configuration.app-name",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityConfigurationProperties",
+      "sourceType": "io.github.swagger.properties.SecurityConfigurationProperties",
       "name": "swagger.security-configuration.scope-separator",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityConfigurationProperties",
+      "sourceType": "io.github.swagger.properties.SecurityConfigurationProperties",
       "name": "swagger.security-configuration.additional-query-string-params",
       "type": "java.util.Map<java.lang.String,java.lang.Object>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityConfigurationProperties",
+      "sourceType": "io.github.swagger.properties.SecurityConfigurationProperties",
       "name": "swagger.security-configuration.use-basic-authentication-with-access-code-grant",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.security-contexts",
       "description": "安全上下文配置",
-      "type": "java.util.List<io.github.wilson.swagger.properties.SecurityContextProperties>"
+      "type": "java.util.List<io.github.swagger.properties.SecurityContextProperties>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityReferenceProperties",
+      "sourceType": "io.github.swagger.properties.SecurityReferenceProperties",
       "name": "swagger.docket.security-contexts.security-references",
       "description": "springfox.documentation.service.SecurityReference属性配置,example:<br>security-references:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;reference:&nbsp;reference-test<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopes:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopeA:&nbsp;manage scope A<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name: reference-testB<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopes:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopeB:&nbsp;manage scope B",
-      "type": "java.util.List<io.github.wilson.swagger.properties.SecurityReferenceProperties>"
+      "type": "java.util.List<io.github.swagger.properties.SecurityReferenceProperties>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityReferenceProperties",
+      "sourceType": "io.github.swagger.properties.SecurityReferenceProperties",
       "name": "swagger.docket.security-contexts.security-references.reference",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityReferenceProperties",
+      "sourceType": "io.github.swagger.properties.SecurityReferenceProperties",
       "name": "swagger.docket.security-contexts.security-references.scopes",
       "type": "java.util.Map<java.lang.String,java.lang.String>",
       "description": "key-AuthorizationScope.scope,value-AuthorizationScope.description"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityContextProperties",
+      "sourceType": "io.github.swagger.properties.SecurityContextProperties",
       "name": "swagger.docket.security-contexts.path-selectors",
       "type": "java.util.List<java.lang.String>",
       "description": "SecurityContext selector安全路径相或"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.SecurityContextProperties",
+      "sourceType": "io.github.swagger.properties.SecurityContextProperties",
       "name": "swagger.docket.security-contexts.method-selectors",
       "type": "java.util.List<org.springframework.http.HttpMethod>",
       "description": "请求方法[GET,POST,PUT,DELETE...]相或"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.security-schemas",
       "type": "com.github.wilson.swagger.properties.SecuritySchemeProperties",
       "description": "安全方案列表(basicAuth、oauth、apiKey)"
@@ -303,7 +303,7 @@
     {
       "sourceType": "com.github.wilson.swagger.properties.SecuritySchemeProperties",
       "name": "swagger.docket.security-schemas.oauth-list",
-      "type": "java.util.List<io.github.wilson.swagger.properties.security.OAuthProperties>",
+      "type": "java.util.List<io.github.swagger.properties.security.OAuthProperties>",
       "deprecated": true,
       "description": "example:<br>oauth-list:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name:&nbsp;oauth-test<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grant-types:&nbsp;[grant-A,grant-B]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopes:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopeA:&nbsp;manage scope A<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name: oauth-testB<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grant-types:&nbsp;[grant-A,grant-B]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopes:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopeB:&nbsp;manage scope B<br>Now security scheme of type OAuth not supported.Please use swagger.security-configuration",
       "deprecation": {
@@ -314,7 +314,7 @@
     {
       "sourceType": "com.github.wilson.swagger.properties.SecuritySchemeProperties",
       "name": "swagger.docket.security-schemas.api-key-list",
-      "type": "java.util.List<io.github.wilson.swagger.properties.security.ApiKeyProperties>",
+      "type": "java.util.List<io.github.swagger.properties.security.ApiKeyProperties>",
       "description": "example:<br>api-key-list:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name:&nbsp;apiName1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key-name:&nbsp;keyName1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass-as:&nbsp;header<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name:&nbsp;apiName1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key-name:&nbsp;keyName1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass-as:&nbsp;query"
     },
     {
@@ -325,280 +325,280 @@
       "description": "header/cookie"
     },
     {
-      "sourceType": "io.github.wilson.swagger.SwaggerAutoConfiguration",
+      "sourceType": "io.github.swagger.SwaggerAutoConfiguration",
       "defaultValue": "true",
       "name": "swagger.enabled",
       "type": "java.lang.Boolean",
       "description": "true:启用,false:禁用"
     },
     {
-      "sourceType": "io.github.wilson.swagger.SwaggerAutoConfiguration",
+      "sourceType": "io.github.swagger.SwaggerAutoConfiguration",
       "defaultValue": "false",
       "name": "swagger.print-init",
       "type": "java.lang.Boolean",
       "description": "true:打印所有docket初始化信息,false:禁用"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ApiInfoProperties",
+      "sourceType": "io.github.swagger.properties.ApiInfoProperties",
       "name": "swagger.docket.api-info",
-      "type": "io.github.wilson.swagger.properties.ApiInfoProperties",
+      "type": "io.github.swagger.properties.ApiInfoProperties",
       "description": "api信息配置"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ContactProperties",
+      "sourceType": "io.github.swagger.properties.ContactProperties",
       "name": "swagger.docket.api-info.contact",
-      "type": "io.github.wilson.swagger.properties.ContactProperties",
+      "type": "io.github.swagger.properties.ContactProperties",
       "description": "联系信息配置"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ContactProperties",
+      "sourceType": "io.github.swagger.properties.ContactProperties",
       "defaultValue": "",
       "name": "swagger.docket.api-info.contact.email",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ContactProperties",
+      "sourceType": "io.github.swagger.properties.ContactProperties",
       "defaultValue": "",
       "name": "swagger.docket.api-info.contact.name",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ContactProperties",
+      "sourceType": "io.github.swagger.properties.ContactProperties",
       "defaultValue": "",
       "name": "swagger.docket.api-info.contact.url",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ApiInfoProperties",
+      "sourceType": "io.github.swagger.properties.ApiInfoProperties",
       "name": "swagger.docket.api-info.description",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ApiInfoProperties",
+      "sourceType": "io.github.swagger.properties.ApiInfoProperties",
       "name": "swagger.docket.api-info.license",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ApiInfoProperties",
+      "sourceType": "io.github.swagger.properties.ApiInfoProperties",
       "name": "swagger.docket.api-info.license-url",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ApiInfoProperties",
+      "sourceType": "io.github.swagger.properties.ApiInfoProperties",
       "name": "swagger.docket.api-info.terms-of-service-url",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ApiInfoProperties",
+      "sourceType": "io.github.swagger.properties.ApiInfoProperties",
       "name": "swagger.docket.api-info.title",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.response-message-language",
       "type": "java.lang.String",
       "default": "en",
       "description": "返回默认信息的国家语言(en-英文,cn-中文)"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ResponseMessageProperties",
+      "sourceType": "io.github.swagger.properties.ResponseMessageProperties",
       "name": "swagger.docket.response-messages",
-      "type": "java.util.List<io.github.wilson.swagger.properties.ResponseMessageProperties>",
+      "type": "java.util.List<io.github.swagger.properties.ResponseMessageProperties>",
       "description": "全局返回默认信息,默认配置了401、403、404、500,相同状态码将覆盖原配置,例:<br>response-messages:<br>&emsp;- code: 506<br>&emsp;&emsp;message: RPC连接超时<br>&emsp;- code: 408<br>&emsp;&emsp;message: 请求超时"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameters",
-      "type": "java.util.List<io.github.wilson.swagger.properties.ParameterProperties>",
+      "type": "java.util.List<io.github.swagger.properties.ParameterProperties>",
       "description": "全局参数配置(可参考parameter配置再加s: '-'即可,param-type默认header),例:<br>global-parameters:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name: token<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: 令牌<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;param-type: query<br>&nbsp;&nbsp;&nbsp;&nbsp;- name: userId<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: 用户id"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameters.- name",
       "type": "java.lang.String",
       "description": "参数名"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameters.  param-type",
       "type": "java.lang.String",
       "description": "参数类型"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ApiInfoProperties",
+      "sourceType": "io.github.swagger.properties.ApiInfoProperties",
       "name": "swagger.docket.api-info.version",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.base-package",
       "description": "controller package",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.group-name",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "defaultValue": "localhost",
       "name": "swagger.docket.host",
       "type": "java.lang.String",
       "description": "主机ip,默认localhost"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.ignored-parameter-types",
       "description": "忽略的参数类型",
       "type": "java.lang.Class<?>[]"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.direct-model-substitutes",
       "description": "类型转换,基数下标取代其下标-1的偶数下标,example:<br>[java.lang.Integer,java.lang.String,java.Timestamp.class, java.lang.Long],Integer将转成String,Timestamp将转成Long",
       "type": "java.util.List<java.lang.Class<?>>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.generic-model-substitutes",
       "type": "java.lang.Class<?>[]"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.global-parameter",
       "sourceMethod": "getGlobalParameter()",
-      "type": "io.github.wilson.swagger.properties.ParameterProperties",
+      "type": "io.github.swagger.properties.ParameterProperties",
       "description": "global-parameters配置将覆盖该配置,若无global-parameters则该配置作为全局唯一参数,也可作为global-parameters的属性配置参考"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.allow-empty-value",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "defaultValue": false,
       "name": "swagger.docket.global-parameter.allow-multiple",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.collection-format",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.default-value",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.description",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "defaultValue": false,
       "name": "swagger.docket.global-parameter.hidden",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "defaultValue": "string",
       "name": "swagger.docket.global-parameter.model-ref",
       "type": "java.lang.String",
       "description": "参数类型实体名"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.name",
       "type": "java.lang.String",
       "description": "参数名"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.order",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.param-access",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.param-type",
       "type": "java.lang.String",
       "default": "header",
       "description": "参数类型(默认header)"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "name": "swagger.docket.global-parameter.pattern",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.ParameterProperties",
+      "sourceType": "io.github.swagger.properties.ParameterProperties",
       "defaultValue": false,
       "name": "swagger.docket.global-parameter.required",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "defaultValue": "\/",
       "name": "swagger.docket.path-mapping",
       "description": "路径映射,默认\"\/\"",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.path-selectors",
       "description": "url于swagger页面的显示配置",
-      "type": "io.github.wilson.swagger.properties.PathSelectorsProperties"
+      "type": "io.github.swagger.properties.PathSelectorsProperties"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.PathSelectorsProperties",
+      "sourceType": "io.github.swagger.properties.PathSelectorsProperties",
       "name": "swagger.docket.path-selectors.exclude-patterns",
       "description": "隐藏路径匹配,example:[/user,/test/user] 隐藏swagger页面上/user及/user/**、/test/user及/test/user/下的所有路径",
       "type": "java.util.List<java.lang.String>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.PathSelectorsProperties",
+      "sourceType": "io.github.swagger.properties.PathSelectorsProperties",
       "name": "swagger.docket.path-selectors.include-patterns",
       "description": "显示路径匹配,example:[/user,/test/user] 显示swagger页面上/user及/user/**、/test/user及/test/user/下的所有路径",
       "type": "java.util.List<java.lang.String>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.protocols",
       "description": "协议,默认[http,https]",
       "type": "java.util.Set<java.lang.String>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.produces",
       "default": "[application/json]",
       "description": "返回结构内容类型集合(Content-Type)",
       "type": "java.util.Set<java.lang.String>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
+      "sourceType": "io.github.swagger.properties.DocketProperties",
       "name": "swagger.docket.consumes",
       "default": "[application/json]",
       "description": "提交参数内容类型集合(Content-Type)",
       "type": "java.util.Set<java.lang.String>"
     },
     {
-      "sourceType": "io.github.wilson.swagger.SwaggerAutoConfiguration",
+      "sourceType": "io.github.swagger.SwaggerAutoConfiguration",
       "name": "swagger.dockets",
-      "type": "java.util.Map<java.lang.String,io.github.wilson.swagger.properties.DocketProperties>",
+      "type": "java.util.Map<java.lang.String,io.github.swagger.properties.DocketProperties>",
       "description": "属性配置同docket,同时配置docket将一起生效,配置demo:<br>swagger:<br>&nbsp;&nbsp;&nbsp;&nbsp;dockets:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-user:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base-package: com.github.wilson.web.controller.user<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-order:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base-package: com.github.wilson.web.controller.order"
     },
     {
-      "sourceType": "io.github.wilson.swagger.SwaggerAutoConfiguration",
+      "sourceType": "io.github.swagger.SwaggerAutoConfiguration",
       "name": "swagger.docket",
-      "type": "io.github.wilson.swagger.properties.DocketProperties",
+      "type": "io.github.swagger.properties.DocketProperties",
       "description": "同时配置dockets将一起生效,该docket beanName默认为docket,dockets配置须注意beanName,dockets属性同该配置"
     }
   ]

@@ -1,4 +1,4 @@
-package io.github.wilson.swagger.properties;
+package io.github.swagger.properties;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;

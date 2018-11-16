@@ -1,4 +1,4 @@
-package io.github.wilson.swagger.properties;
+package io.github.swagger.properties;
 
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableList;

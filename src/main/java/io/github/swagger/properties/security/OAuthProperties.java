@@ -1,4 +1,4 @@
-package io.github.wilson.swagger.properties.security;
+package io.github.swagger.properties.security;
 
 import lombok.Setter;
 import lombok.ToString;

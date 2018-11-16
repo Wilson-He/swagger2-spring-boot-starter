@@ -1,4 +1,4 @@
-package io.github.wilson.swagger.properties;
+package io.github.swagger.properties;
 
 import springfox.documentation.spring.web.paths.AbstractPathProvider;
 

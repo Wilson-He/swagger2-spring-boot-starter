@@ -1,8 +1,8 @@
-package io.github.wilson.swagger;
+package io.github.swagger;
 
 
-import io.github.wilson.swagger.properties.DocketProperties;
-import io.github.wilson.swagger.properties.SecurityConfigurationProperties;
+import io.github.swagger.properties.DocketProperties;
+import io.github.swagger.properties.SecurityConfigurationProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;

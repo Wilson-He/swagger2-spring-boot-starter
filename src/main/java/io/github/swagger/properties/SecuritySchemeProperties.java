@@ -1,9 +1,9 @@
-package io.github.wilson.swagger.properties;
+package io.github.swagger.properties;
 
+import io.github.swagger.properties.security.ApiKeyProperties;
+import io.github.swagger.properties.security.OAuthProperties;
 import lombok.Setter;
 import lombok.ToString;
-import io.github.wilson.swagger.properties.security.ApiKeyProperties;
-import io.github.wilson.swagger.properties.security.OAuthProperties;
 import springfox.documentation.service.ApiKey;
 import springfox.documentation.service.BasicAuth;
 import springfox.documentation.service.OAuth;
