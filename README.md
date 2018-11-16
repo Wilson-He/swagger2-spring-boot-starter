@@ -56,21 +56,21 @@ In order to give users a clearer understanding of swagger's various levels of co
         - -&nbsp;global-parameter[b].properties
       - response-message-language(extra)
       - response-messages
-## 配置简介
-标注了extra的皆为个人开发配置，非根据swagger原有配置转换而来，该简介主要对extra部分进行讲解。
--  swagger.print-init:是否在控制台输出各docket初始化的配置信息
-![输出初始化信息](https://img-blog.csdnimg.cn/20181114201529513.png)
+## Extra configuration introduction
+Some configuration marked extra are personal development, not according to swagger original configuration.This introduction mainly explains the extra part, and other part you can configure according to the swagger original hierarchy.
+-  swagger.print-init: If true,println each docket initialized information.Default false
+![output initilization information](https://img-blog.csdnimg.cn/20181114201529513.png)
 
-- swagger.enabled:是否开启swagger自动化配置(为了保留之前的配置但不开启配置而添加了该配置项)
-- swagger.dockets:用于配置多个docket，属性内容与docket相同,若该配置项存在将覆盖docket配置，base-package须填，否则将报NullPointException，example:
+- swagger.enabled:Enable swagger automatic configuration.If false,none bean(such as docket,apiResourceController) about swagger will initialize.
+- swagger.dockets:Used to configure multiple docket, and its properties is same as docket.If you use intellij idea, you can see the example by Ctrl+Q when your cursor focus on swagger.dockets. And the base-package is required too.Example:
    - swagger:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;dockets:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-test: &nbsp;&nbsp;&nbsp;&nbsp;#注册一个beanName为docket-test的Docket到Spring容器中<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-test: &nbsp;&nbsp;&nbsp;&nbsp;# register a docket naming docket-test into Spring container<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base-package: org.noslim.controller.test<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-order:&nbsp;&nbsp;#注册一个beanName为docket-order的Docket到Spring容器中<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-order:&nbsp;&nbsp;# register a docket naming docket-order into Spring container<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base-package: org.noslim.controller.order
-- swagger.docket.path-selectors:swagger-ui上的路径选择器
-	- include-patterns:路径显示样式
-	- exclude-patterns:路径隐藏样式
-- swagger.docket.global-parameter:配置全局参数,若同时配置了global-parameters,global-parameters会将global-parameter也加到全局参数里
-- swagger.docket.response-message-language:全局信息返回语言(仅配置了401,403,404,500,可通过接口@ApiResponse覆盖)，下图为cn信息
+- swagger.docket.path-selectors: Select which paths will be displayed on swagger-ui
+	- include-patterns:which paths will be displayed on swagger-ui.Example:[/user/**,/common/**]
+	- exclude-patterns:which paths will be hidden on swagger-ui
+- swagger.docket.global-parameter:Configuring global parameters.If global-parameters is configured at the same time,global-parameter will be appended to global-parameters. 
+- swagger.docket.response-message-language:Global response message language(such as en,cn).
