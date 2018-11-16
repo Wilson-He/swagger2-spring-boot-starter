@@ -79,7 +79,7 @@ Some configuration marked extra are personal development, not according to swagg
 - swagger.docket.response-message-language:Global response message language(such as en,cn).
 
 ## Tips
-If you don't know how to configure a properties, you can focus cursor on the property and then Ctrl+Q in intellij idea, maybe it's helpful.
+If you don't know how to configure a properties, you can focus cursor on the property and then Ctrl+Q in intellij idea, maybe it's helpful.<br>
 ![status code configure example](https://img-blog.csdnimg.cn/20181115112436449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3oyODEyNjMwOA==,size_16,color_FFFFFF,t_70)
 ![response message configure example](https://img-blog.csdnimg.cn/20181115112541433.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3oyODEyNjMwOA==,size_16,color_FFFFFF,t_70)
 
