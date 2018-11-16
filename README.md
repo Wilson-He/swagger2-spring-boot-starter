@@ -1,9 +1,18 @@
-# swagger2-spring-boot-starter自动化配置框架
+# swagger2-spring-boot-starter
+Swagger Spring Boot Starter.
+Support jdk 1.8 or 1.8+,base on spring-boot 2.0+ and swagger2-2.9.2
+## Installation
+Add the following dependence into your project and make sure that your project is using spring-boot 2.0+ version.
 
-## 简介
-该框架基于swagger2-2.9.2与SpringBoot-2.0.1版本进行搭建,兼容SpringBoot2.x以上版本,不兼容1.x版本
-## 配置结构
-为了让使用者更清晰的了解swagger各层次配置，该框架主要根据原swagger配置结构进行属性分层配置，结构树如下(省略了部分)：
+
+    <dependency>
+        <groupId>com.github.wilson.swagger</groupId>
+        <artifactId>swagger2-spring-boot-starter</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+  
+## Configuration tree
+In order to give users a clearer understanding of swagger's various levels of configuration, the framework is mainly configured according to the original swagger configuration structure.The structure tree is as follows(omit part)：
 - swagger
    - print-init(extra)
    - enabled(extra)
@@ -16,7 +25,7 @@
        - docket.properties
      - ...
    - docket
-     - base-package(required,null将导致NPE)
+     - base-package(required,not configure will result NPE)
  	 - path-mapping
  	 - group-name
  	 - host
