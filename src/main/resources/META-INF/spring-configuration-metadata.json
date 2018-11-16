@@ -1,5 +1,149 @@
 {
   "hints": [
+        {
+      "name": "swagger.docket.produces",
+      "type": "java.util.Set<java.lang.String>",
+      "values": [
+        {
+          "value": "*/*"
+        },
+        {
+          "value": "application/atom+xml"
+        },
+        {
+          "value": "application/x-www-form-urlencoded"
+        },
+        {
+          "value": "application/json"
+        },
+        {
+          "value": "application/json;charset=UTF-8"
+        },
+        {
+          "value": "application/pdf"
+        },
+        {
+          "value": "application/problem+json"
+        },
+        {
+          "value": "application/octet-stream"
+        },
+        {
+          "value": "application/problem+json;charset=UTF-8"
+        },
+        {
+          "value": "application/problem+xml"
+        },
+        {
+          "value": "application/rss+xml"
+        },
+        {
+          "value": "application/stream+json"
+        },
+        {
+          "value": "application/xhtml+xml"
+        },
+        {
+          "value": "application/xml"
+        },
+        {
+          "value": "image/gif"
+        },
+        {
+          "value": "image/jpeg"
+        },
+        {
+          "value": "image/png"
+        },
+        {
+          "value": "multipart/form-data"
+        },
+        {
+          "value": "text/event-stream"
+        },
+        {
+          "value": "text/html"
+        },
+        {
+          "value": "text/markdown"
+        },
+        {
+          "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "name": "swagger.docket.consumes",
+      "type": "java.util.Set<java.lang.String>",
+      "values": [
+        {
+          "value": "*/*"
+        },
+        {
+          "value": "application/atom+xml"
+        },
+        {
+          "value": "application/x-www-form-urlencoded"
+        },
+        {
+          "value": "application/json"
+        },
+        {
+          "value": "application/json;charset=UTF-8"
+        },
+        {
+          "value": "application/pdf"
+        },
+        {
+          "value": "application/problem+json"
+        },
+        {
+          "value": "application/octet-stream"
+        },
+        {
+          "value": "application/problem+json;charset=UTF-8"
+        },
+        {
+          "value": "application/problem+xml"
+        },
+        {
+          "value": "application/rss+xml"
+        },
+        {
+          "value": "application/stream+json"
+        },
+        {
+          "value": "application/xhtml+xml"
+        },
+        {
+          "value": "application/xml"
+        },
+        {
+          "value": "image/gif"
+        },
+        {
+          "value": "image/jpeg"
+        },
+        {
+          "value": "image/png"
+        },
+        {
+          "value": "multipart/form-data"
+        },
+        {
+          "value": "text/event-stream"
+        },
+        {
+          "value": "text/html"
+        },
+        {
+          "value": "text/markdown"
+        },
+        {
+          "value": "text/plain"
+        }
+      ]
+    },
     {
       "name": "swagger.docket.global-parameter.param-type",
       "type": "java.lang.String",
