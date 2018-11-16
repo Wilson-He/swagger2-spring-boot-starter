@@ -64,4 +64,4 @@
 	- include-patterns:路径显示样式
 	- exclude-patterns:路径隐藏样式
 - swagger.docket.global-parameter:配置全局参数,若同时配置了global-parameters,global-parameters会将global-parameter也加到全局参数里
-- swagger.docket.response-message-language:全局信息返回语言(仅配置了401,403,404,500,可通过接口@ApiResponse覆盖)，下图为cn信息
+- swagger.docket.response-message-language:全局信息返回语言(en,cn)，下图为cn信息
