@@ -578,16 +578,16 @@
     {
       "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
       "name": "swagger.docket.produces",
-      "default": "MediaType.ALL",
+      "default": "[application/json]",
       "description": "返回结构内容类型集合(Content-Type)",
-      "type": "java.util.Set<org.springframework.http.MediaType>"
+      "type": "java.util.Set<java.lang.String>"
     },
     {
       "sourceType": "io.github.wilson.swagger.properties.DocketProperties",
       "name": "swagger.docket.consumes",
-      "default": "MediaType.ALL",
+      "default": "[application/json]",
       "description": "提交参数内容类型集合(Content-Type)",
-      "type": "java.util.Set<org.springframework.http.MediaType>"
+      "type": "java.util.Set<java.lang.String>"
     },
     {
       "sourceType": "io.github.wilson.swagger.SwaggerAutoConfiguration",
