@@ -1,6 +1,8 @@
 # swagger2-spring-boot-starter
+[中文版文档](https://github.com/Wilson-He/swagger2-spring-boot-starter/blob/master/README_zh.md)<br>
 Swagger Spring Boot Starter.
 Support jdk 1.8 or 1.8+,base on spring-boot 2.0+ and swagger2-2.9.2
+
 ## Installation
 Add the following dependence into your project and make sure that your project is using spring-boot 2.0+ version.
 
@@ -56,6 +58,7 @@ In order to give users a clearer understanding of swagger's various levels of co
         - -&nbsp;global-parameter[b].properties
       - response-message-language(extra)
       - response-messages
+      
 ## Extra configuration introduction
 Some configuration marked extra are personal development, not according to swagger original configuration.This introduction mainly explains the extra part, and other part you can configure according to the swagger original hierarchy.
 -  swagger.print-init: If true,println each docket initialized information.Default false
@@ -74,3 +77,173 @@ Some configuration marked extra are personal development, not according to swagg
 	- exclude-patterns:which paths will be hidden on swagger-ui
 - swagger.docket.global-parameter:Configuring global parameters.If global-parameters is configured at the same time,global-parameter will be appended to global-parameters. 
 - swagger.docket.response-message-language:Global response message language(such as en,cn).
+
+## Tips
+If you don't know how to configure a properties, you can focus cursor on the property, maybe it's helpful.
+![status code configure example](https://img-blog.csdnimg.cn/20181115112436449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3oyODEyNjMwOA==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20181115112541433.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3oyODEyNjMwOA==,size_16,color_FFFFFF,t_70)
+
+If you use zuul to route swagger or want to export swagger to an html/pdf file, I advise don't configure group-name, it will result in an exception.
+
+## Quick start
+#### dependencies
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.1.RELEASE</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.wilson</groupId>
+            <artifactId>swagger2-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+#### Application.java
+
+	package org.noslim.web;
+	
+	import io.swagger.annotations.Api;
+	import io.swagger.annotations.ApiResponse;
+	import io.swagger.annotations.ApiResponses;
+	import org.springframework.boot.SpringApplication;
+	import org.springframework.boot.autoconfigure.SpringBootApplication;
+	import org.springframework.http.ResponseEntity;
+	import org.springframework.web.bind.annotation.GetMapping;
+	import org.springframework.web.bind.annotation.RestController;
+	
+	@SpringBootApplication
+	@RestController
+	@Api
+	@ApiResponses({@ApiResponse(code = 200, message = "success", response = ResponseEntity.class)})
+	public class Application {
+	    public static void main(String[] args) {
+	        SpringApplication.run(Application.class);
+	    }
+	
+	    @GetMapping("/index")
+	    public String index() {
+	        return "index";
+	    }
+	
+	    @GetMapping("/home")
+	    public String home() {
+	        return "home";
+	    }
+	
+	    @GetMapping("/home/test")
+	    public String homeTest() {
+	        return "test";
+	    }
+	
+	    @GetMapping("/test")
+	    public String test() {
+	        return "test";
+	    }
+	
+	    @GetMapping("/index/test")
+	    public String indexTest() {
+	        return "test";
+	    }
+	
+	    @GetMapping("/index/test/a")
+	    public String indexTestA() {
+	        return "test";
+	    }
+	}
+#### application.yml
+
+	swagger:
+	  print-init: true #not required
+	  enabled: true #required
+	  docket:
+	    base-package: org.noslim.web   #required
+	server:
+	  port: 8888   #not required
+	  servlet:
+	    context-path: /test  #not required
+
+
+
+#### Complex application.yml demo:
+
+	swagger:
+	  print-init: true
+	  enabled: true
+	  security-configuration:
+	      client-id: client-1
+	      client-secret: secretA
+	      scope-separator: \,
+	      use-basic-authentication-with-access-code-grant: true
+	  docket:
+	    base-package: org.noslim.web
+	    group-name: origin
+		direct-model-substitutes: [java.sql.Timestamp,java.lang.Long]
+	    path-selectors:
+	      include-patterns: [/home/*,/**]
+	      exclude-patterns: [/index/*]
+	    api-info:
+	      contact:
+	        name: Wilson
+	        email: 845023508@qq.com
+	        url: http://blog.csdn.net/z28126308/
+	    security-contexts:
+	      path-selectors: [/**]
+	      method-selectors: [get,post,put,delete]
+	      security-references:
+	        scopes:
+	          scopeA: manage scope A
+	          scopeB: manage scope B
+	        reference: reference-1
+	    security-schemas:
+	      basic-auth-list: [basic-1,basic-2]
+	      api-key-list:
+	          - name: query
+	            key-name: Authorization
+	            pass-as: header
+	#      oauth-list:
+	#          - name: oa1
+	#            grant-types: [admin]
+	#            scopes:
+	#              scopeA: manage scope A
+	    response-message-language: cn
+	    response-messages:
+	      - code: 501
+	        message: test info
+	    global-parameters:
+	      - name: sss
+	        param-type: header
+	        description: global header sss
+	  dockets:
+	    docket-test:
+	      base-package: org.noslim.web.test
+	      group-name: test-module
+	      api-info:
+	        contact:
+	          name: Wilson
+	          email: 845023508@qq.com
+	          url: http://blog.csdn.net/z28126308/
+	      response-messages:
+	        - code: 501
+	          message: test
+	      global-parameters:
+	        - name: token
+	          description: page token
+	          param-type: header
+	        - name: userId
+	          description: user identification
+	          param-type: query
+	    docket-order:
+	      api-info:
+	        contact:
+	          name: Wilson
+	          email: 845023508@qq.com
+	          url: http://blog.csdn.net/z28126308/
+	      base-package: org.noslim.controller
+	      group-name: order-module
