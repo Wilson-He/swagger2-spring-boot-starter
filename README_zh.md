@@ -5,11 +5,11 @@
 [详细博客文章](https://blog.csdn.net/z28126308/article/details/84187221)
 ## 依赖添加
 
-<dependency>
-    <groupId>com.github.wilson.swagger</groupId>
-    <artifactId>swagger2-spring-boot-starter</artifactId>
-    <version>1.0.0-RELEASE</version>
-</dependency>
+	<dependency>
+	    <groupId>com.github.wilson.swagger</groupId>
+	    <artifactId>swagger2-spring-boot-starter</artifactId>
+	    <version>1.0.0-RELEASE</version>
+	</dependency>
 ## 配置结构
 为了让使用者更清晰的了解swagger各层次配置，该框架主要根据原swagger配置结构进行属性分层配置，结构树如下(省略了部分)：
 - swagger
