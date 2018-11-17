@@ -20,7 +20,6 @@ import static springfox.documentation.builders.BuilderDefaults.defaultIfAbsent;
  * Swagger global return message model,{@link ResponseMessage} properties converter
  *
  * @author Wilson
- * @date 2018/11/10
  */
 @ToString
 @NoArgsConstructor

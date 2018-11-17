@@ -13,7 +13,6 @@ import java.util.Map;
  * {@link SecurityReference} properties converter
  *
  * @author Wilson
- * @date 2018/9/29
  */
 @Setter
 @ToString

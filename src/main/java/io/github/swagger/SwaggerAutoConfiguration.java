@@ -30,7 +30,6 @@ import java.util.Map;
  * SwaggerAutoConfiguration - swagger-spring-boot自动化配置类
  *
  * @author Wilson
- * @date 2018/9/29
  */
 @Configuration
 @EnableSwagger2

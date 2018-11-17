@@ -8,7 +8,6 @@ import springfox.documentation.service.ApiKey;
  * Swagger {@link ApiKey} properties converter
  *
  * @author Wilson
- * @date 2018/11/10
  */
 @Setter
 @ToString

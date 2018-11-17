@@ -10,7 +10,6 @@ import java.util.Collections;
  * Swagger {@link ApiInfo} properties converter
  *
  * @author Wilson
- * @date 2018/11/10
  */
 @Setter
 @ToString

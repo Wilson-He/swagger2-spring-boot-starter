@@ -9,7 +9,6 @@ import javax.servlet.ServletContext;
  * DefaultPathProvider-配置文档导出BasePath
  *
  * @author Wilson
- * @date 2018/10/3
  */
 public class DefaultPathProvider extends AbstractPathProvider {
 

@@ -11,7 +11,6 @@ import java.util.List;
  * PathSelectorsProperties-Swagger页面路径选择器
  *
  * @author Wilson
- * @date 2018/11/13
  */
 @Setter
 @Getter

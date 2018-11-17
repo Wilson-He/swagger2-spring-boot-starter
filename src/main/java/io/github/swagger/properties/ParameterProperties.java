@@ -23,7 +23,6 @@ import static springfox.documentation.builders.BuilderDefaults.emptyToNull;
  * Swagger {@link Parameter} properties converter
  *
  * @author Wilson
- * @date 2018/11/10
  */
 @ToString
 public class ParameterProperties {

@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
  * Swagger {@link springfox.documentation.service.SecurityScheme} implements class list
  *
  * @author Wilson
- * @date 2018/11/10
  */
 @Setter
 @ToString

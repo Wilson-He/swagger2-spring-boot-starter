@@ -9,7 +9,6 @@ import java.util.Map;
  * Swagger {@link SecurityConfiguration} properties converter
  *
  * @author Wilson
- * @date 2018/11/10
  */
 @Setter
 public class SecurityConfigurationProperties {

@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
  * {@link SecurityContext} properties converter
  *
  * @author Wilson
- * @date 2018/9/29
  */
 @Setter
 @ToString
