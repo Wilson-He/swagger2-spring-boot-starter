@@ -10,7 +10,7 @@ Add the following dependence into your project and make sure that your project i
     <dependency>
         <groupId>com.github.wilson.swagger</groupId>
         <artifactId>swagger2-spring-boot-starter</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-RELEASE</version>
     </dependency>
   
 ## Configuration tree
