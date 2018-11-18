@@ -303,7 +303,7 @@
     {
       "sourceType": "com.github.wilson.swagger.properties.SecuritySchemeProperties",
       "name": "swagger.docket.security-schemas.oauth-list",
-      "type": "java.util.List<io.github.swagger.properties.security.OAuthProperties>",
+      "type": "java.util.List<io.github.swagger.properties.schema.OAuthProperties>",
       "deprecated": true,
       "description": "example:<br>oauth-list:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name:&nbsp;oauth-test<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grant-types:&nbsp;[grant-A,grant-B]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopes:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopeA:&nbsp;manage scope A<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name: oauth-testB<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grant-types:&nbsp;[grant-A,grant-B]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopes:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scopeB:&nbsp;manage scope B<br>Now security scheme of type OAuth not supported.Please use swagger.security-configuration",
       "deprecation": {
@@ -314,7 +314,7 @@
     {
       "sourceType": "com.github.wilson.swagger.properties.SecuritySchemeProperties",
       "name": "swagger.docket.security-schemas.api-key-list",
-      "type": "java.util.List<io.github.swagger.properties.security.ApiKeyProperties>",
+      "type": "java.util.List<io.github.swagger.properties.schema.ApiKeyProperties>",
       "description": "example:<br>api-key-list:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name:&nbsp;apiName1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key-name:&nbsp;keyName1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass-as:&nbsp;header<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name:&nbsp;apiName1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key-name:&nbsp;keyName1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass-as:&nbsp;query"
     },
     {
