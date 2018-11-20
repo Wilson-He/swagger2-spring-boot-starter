@@ -54,11 +54,11 @@ public class DocketProperties {
     /**
      * 返回结构内容类型集合(Content-Type)
      */
-    private Set<MediaType> produces = Sets.newHashSet(MediaType.ALL);
+    private Set<String> produces = Sets.newHashSet(MediaType.APPLICATION_JSON_VALUE);
     /**
      * 提交参数内容类型集合(Content-Type)
      */
-    private Set<MediaType> consumes = Sets.newHashSet(MediaType.ALL);
+    private Set<String> consumes = Sets.newHashSet(MediaType.APPLICATION_JSON_VALUE);
     /**
      * 全局参数配置
      */
@@ -101,12 +101,6 @@ public class DocketProperties {
 
     public Docket toDocket(String beanName, String contextPath, String port) {
         List<ResponseMessage> responseMessages = toResponseMessages();
-        List<String> produceTypes = Arrays.asList(MediaType.toString(produces)
-                .replaceAll("\\s+", "")
-                .split(","));
-        List<String> consumeTypes = Arrays.asList(MediaType.toString(consumes)
-                .replaceAll("\\s+", "")
-                .split(","));
         Docket docket = new Docket(DocumentationType.SWAGGER_2);
         if (directModelSubstitutes != null && directModelSubstitutes.size() % 2 == 0) {
             IntStream.range(0, directModelSubstitutes.size())
@@ -117,14 +111,14 @@ public class DocketProperties {
                 .host(host + ":" + port)
                 .genericModelSubstitutes(Optional.ofNullable(genericModelSubstitutes).orElse(new Class[0]))
                 .pathProvider(Objects.equals(DEFAULT_DOCKET, beanName) ? new DefaultPathProvider(contextPath) : null)
-                .groupName(Optional.ofNullable(groupName).orElse(beanName))
+                .groupName(groupName)
                 .securityContexts(toSecurityContexts())
                 .securitySchemes(toSecuritySchemes())
                 .apiInfo(apiInfo.toApiInfo())
                 .globalOperationParameters(toGlobalParameters())
                 .protocols(protocols)
-                .produces(new HashSet<>(produceTypes))
-                .consumes(new HashSet<>(consumeTypes))
+                .produces(produces)
+                .consumes(consumes)
                 .globalResponseMessage(RequestMethod.GET, responseMessages)
                 .globalResponseMessage(RequestMethod.PUT, responseMessages)
                 .globalResponseMessage(RequestMethod.POST, responseMessages)

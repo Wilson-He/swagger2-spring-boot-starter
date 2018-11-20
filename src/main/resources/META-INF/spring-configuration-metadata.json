@@ -163,24 +163,6 @@
       ]
     },
     {
-      "name": "swagger.docket.global-parameters.  param-type",
-      "type": "java.lang.String",
-      "values": [
-        {
-          "value": "header"
-        },
-        {
-          "value": "cookie"
-        },
-        {
-          "value": "body"
-        },
-        {
-          "value": "query"
-        }
-      ]
-    },
-    {
       "name": "swagger.docket.security-schemas.api-key-list.  pass-as",
       "type": "java.lang.String",
       "values": [
@@ -413,18 +395,6 @@
       "description": "全局参数配置(可参考parameter配置再加s: '-'即可,param-type默认header),例:<br>global-parameters:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name: token<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: 令牌<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;param-type: query<br>&nbsp;&nbsp;&nbsp;&nbsp;- name: userId<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: 用户id"
     },
     {
-      "sourceType": "io.github.swagger.properties.ParameterProperties",
-      "name": "swagger.docket.global-parameters.- name",
-      "type": "java.lang.String",
-      "description": "参数名"
-    },
-    {
-      "sourceType": "io.github.swagger.properties.ParameterProperties",
-      "name": "swagger.docket.global-parameters.  param-type",
-      "type": "java.lang.String",
-      "description": "参数类型"
-    },
-    {
       "sourceType": "io.github.swagger.properties.ApiInfoProperties",
       "name": "swagger.docket.api-info.version",
       "type": "java.lang.String"
@@ -600,6 +570,12 @@
       "name": "swagger.docket",
       "type": "io.github.swagger.properties.DocketProperties",
       "description": "同时配置dockets将一起生效,该docket beanName默认为docket,dockets配置须注意beanName,dockets属性同该配置"
+    },
+    {
+      "sourceType": "io.github.swagger.DefaultResourcesProvider",
+      "name": "swagger.resources-provider.swagger-resources",
+      "type": "java.util.List<springfox.documentation.swagger.web.SwaggerResource>",
+      "description": "配置demo:<br>swagger:<br>&nbsp;&nbsp;&nbsp;&nbsp;resources-provider:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swagger-resources:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name:&nbsp;name1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;url-1<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swagger-version:&nbsp;latest<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;name:&nbsp;name2<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;url-2<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swagger-version:&nbsp;latest"
     }
   ]
 }
