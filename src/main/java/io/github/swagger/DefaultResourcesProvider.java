@@ -1,7 +1,7 @@
 package io.github.swagger;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +21,7 @@ import java.util.List;
  * @date 2018/11/20
  */
 @Component("resourcesProvider")
-@Qualifier
+@Primary
 @ConfigurationProperties("swagger.resources-provider")
 public class DefaultResourcesProvider implements SwaggerResourcesProvider, ApplicationContextAware {
     private List<SwaggerResource> swaggerResources;
