@@ -1,3 +1,4 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-io.github.swagger.SwaggerAutoConfiguration
+io.github.swagger.SwaggerAutoConfiguration,\
+io.github.swagger.DefaultResourcesProvider

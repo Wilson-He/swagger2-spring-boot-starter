@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.wilson-he</groupId>
     <artifactId>swagger2-spring-boot-starter</artifactId>
-    <version>1.0.1-RELEASE</version>
+    <version>1.0.2-RELEASE</version>
     <packaging>jar</packaging>
     <name>swagger2-spring-boot-starter</name>
     <url>https://github.com/Wilson-He/swagger2-spring-boot-starter</url>
@@ -92,12 +92,11 @@
     </distributionManagement>
 
     <build>
-        <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.3</version>
+                <version>1.6.7</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
