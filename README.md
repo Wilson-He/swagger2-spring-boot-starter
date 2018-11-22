@@ -281,4 +281,4 @@ If you use zuul to route swagger or want to export swagger to an html/pdf file, 
 	        url: /user-provider/v2/api-docs
 	  enabled: true
 #### zuul swagger-ui
-![zuul-docs](https://img-blog.csdnimg.cn/20181122104729951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3oyODEyNjMwOA==,size_16,color_FFFFFF,t_70)
+![zuul swagger-ui](https://img-blog.csdnimg.cn/20181122105526130.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3oyODEyNjMwOA==,size_16,color_FFFFFF,t_70)
