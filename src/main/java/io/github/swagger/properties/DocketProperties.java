@@ -30,7 +30,6 @@ import java.util.stream.IntStream;
 public class DocketProperties {
     public final static String DEFAULT_DOCKET = "docket";
     private final static String LANGUAGE_EN = "en";
-    private final static String LANGUAGE_CN = "cn";
     /**
      * 路径映射,默认"/"
      */
@@ -99,7 +98,7 @@ public class DocketProperties {
     private List<Class> directModelSubstitutes;
     private Class<?>[] genericModelSubstitutes;
 
-    public Docket toDocket(String beanName, String contextPath, String port) {
+    public Docket toDocket(String beanName, String contextPath) {
         List<ResponseMessage> responseMessages = toResponseMessages();
         Docket docket = new Docket(DocumentationType.SWAGGER_2);
         if (directModelSubstitutes != null && directModelSubstitutes.size() % 2 == 0) {
@@ -107,8 +106,7 @@ public class DocketProperties {
                     .filter(i -> i % 2 == 0)
                     .forEach(i -> docket.directModelSubstitute(directModelSubstitutes.get(i), directModelSubstitutes.get(i + 1)));
         }
-        return docket.pathMapping(pathMapping)
-                .host(host + ":" + port)
+        docket.pathMapping(pathMapping)
                 .genericModelSubstitutes(Optional.ofNullable(genericModelSubstitutes).orElse(new Class[0]))
                 .pathProvider(Objects.equals(DEFAULT_DOCKET, beanName) ? new DefaultPathProvider(contextPath) : null)
                 .groupName(groupName)
@@ -123,8 +121,8 @@ public class DocketProperties {
                 .globalResponseMessage(RequestMethod.PUT, responseMessages)
                 .globalResponseMessage(RequestMethod.POST, responseMessages)
                 .globalResponseMessage(RequestMethod.DELETE, responseMessages)
-                .ignoredParameterTypes(Optional.ofNullable(ignoredParameterTypes).orElse(new Class[0]))
-                .select()
+                .ignoredParameterTypes(Optional.ofNullable(ignoredParameterTypes).orElse(new Class[0]));
+        return basePackage == null ? docket : docket.select()
                 .apis(RequestHandlerSelectors.basePackage(basePackage))
                 .paths(toPathSelector())
                 .build();
