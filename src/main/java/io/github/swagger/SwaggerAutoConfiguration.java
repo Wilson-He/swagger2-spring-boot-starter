@@ -55,6 +55,7 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
     private Map<String, DocketProperties> dockets;
     private SecurityConfigurationProperties securityConfiguration;
     private Boolean printInit = false;
+    private DefaultResourcesProvider resourcesProvider;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -81,6 +82,19 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
                 defaultListableBeanFactory.registerSingleton(names[0], apiResourceController);
             }
         }
+        if (resourcesProvider != null) {
+            String[] names = beanFactory.getBeanNamesForType(ApiResourceController.class);
+            if (names.length == 1 && defaultListableBeanFactory != null) {
+                ApiResourceController apiResourceController = (ApiResourceController) defaultListableBeanFactory.getSingleton(names[0]);
+                defaultListableBeanFactory.destroySingleton(names[0]);
+                Field field = ApiResourceController.class.getDeclaredField("swaggerResources");
+                field.setAccessible(true);
+                field.set(apiResourceController, resourcesProvider);
+                defaultListableBeanFactory.registerSingleton(names[0], apiResourceController);
+                log.info(resourcesProvider.toString());
+                swaggerUrl = "http://localhost:" + port + (contextPath + "/swagger-ui.html").replaceAll("//", "/");
+            }
+        }
         List<String> beanNameList = new ArrayList<>();
         if (dockets != null && dockets.size() > 0) {
             dockets.forEach((beanName, properties) -> registerDocket(beanName, properties, beanNameList));
@@ -88,7 +102,8 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
         if (docket != null) {
             registerDocket(DocketProperties.DEFAULT_DOCKET, docket, beanNameList);
         }
-        log.info("{} initialization completed, swagger url: {}", beanNameList.toString(), swaggerUrl);
+        log.info(String.format("%sinitialization completed, swagger url: %s",
+                beanNameList.isEmpty() ? "" : beanNameList.toString() + " ", swaggerUrl));
     }
 
     /**
@@ -103,7 +118,7 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
             log.info(properties.toString().replaceFirst(DocketProperties.class.getSimpleName(), beanName)
                     .replaceAll("Properties", ""));
         }
-        beanFactory.registerSingleton(beanName, properties.toDocket(beanName, contextPath, port));
+        beanFactory.registerSingleton(beanName, properties.toDocket(beanName, contextPath));
         beanNameList.add(beanName);
         swaggerUrl = "http://" + (properties.getHost() + ":" + port + contextPath + "/swagger-ui.html").replaceAll("//", "/");
     }
@@ -122,5 +137,9 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
 
     public void setPrintInit(Boolean printInit) {
         this.printInit = printInit;
+    }
+
+    public void setResourcesProvider(DefaultResourcesProvider resourcesProvider) {
+        this.resourcesProvider = resourcesProvider;
     }
 }
