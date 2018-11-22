@@ -27,7 +27,7 @@ In order to give users a clearer understanding of swagger's various levels of co
        - docket.properties
      - ...
    - docket
-     - base-package(required,not configure will result NPE)
+     - base-package
  	 - path-mapping
  	 - group-name
  	 - host
@@ -58,6 +58,11 @@ In order to give users a clearer understanding of swagger's various levels of co
         - -&nbsp;global-parameter[b].properties
       - response-message-language(extra)
       - response-messages
+    - resources-provider(configure zuul route docs,need to make enabled 'true')
+      - swagger-resources
+        - name
+        - url
+        - swagger-version
       
 ## Extra configuration introduction
 Some configuration marked extra are personal development, not according to swagger original configuration.This introduction mainly explains the extra part, and other part you can configure according to the swagger original hierarchy.
@@ -65,7 +70,7 @@ Some configuration marked extra are personal development, not according to swagg
 ![output initilization information](https://img-blog.csdnimg.cn/20181114201529513.png)
 
 - swagger.enabled:Enable swagger automatic configuration.If false,none bean(such as docket,apiResourceController) about swagger will initialize.
-- swagger.dockets:Used to configure multiple docket, and its properties is same as docket.If you use intellij idea, you can see the example by Ctrl+Q when your cursor focus on swagger.dockets. And the base-package is required too.Example:
+- swagger.dockets:Used to configure multiple docket, and its properties is same as docket.If you use intellij idea, you can see the example by Ctrl+Q when your cursor focus on swagger.dockets .Example:
    - swagger:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;dockets:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-test: &nbsp;&nbsp;&nbsp;&nbsp;# register a docket naming docket-test into Spring container<br>
@@ -247,3 +252,33 @@ If you use zuul to route swagger or want to export swagger to an html/pdf file, 
 	          url: http://blog.csdn.net/z28126308/
 	      base-package: org.noslim.controller
 	      group-name: order-module
+	      
+## Zuul example:
+#### application.yml
+	server:
+	  port: 8999
+	spring:
+	  application:
+	    name: api-docs
+	zuul:
+	  routes:
+	    user-provider:
+	      path: /user-provider/**
+	    user-consumer:
+	      path: /user-consumer/**
+	
+	eureka:
+	  client:
+	    service-url:
+	      defaultZone: http://eureka1:50001/eureka/,http://eureka2:50002/eureka/
+	
+	swagger:
+	  resources-provider:
+	    swagger-resources:
+	      - name: 用户消费者模块
+	        url: /user-consumer/v2/api-docs
+	      - name: 用户提供者模块
+	        url: /user-provider/v2/api-docs
+	  enabled: true
+#### zuul swagger-ui
+![zuul-docs](https://img-blog.csdnimg.cn/20181122104729951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3oyODEyNjMwOA==,size_16,color_FFFFFF,t_70)
