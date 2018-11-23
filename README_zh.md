@@ -8,7 +8,7 @@
 	<dependency>
 	    <groupId>com.github.wilson.swagger</groupId>
 	    <artifactId>swagger2-spring-boot-starter</artifactId>
-	    <version>1.0.0-RELEASE</version>
+	    <version>LATEST</version>
 	</dependency>
 ## 配置结构
 为了让使用者更清晰的了解swagger各层次配置，该框架主要根据原swagger配置结构进行属性分层配置，结构树如下(省略了部分)：
