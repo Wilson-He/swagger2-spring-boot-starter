@@ -1,7 +1,7 @@
 # swagger2-spring-boot-starter
 [中文版文档](https://github.com/Wilson-He/swagger2-spring-boot-starter/blob/master/README_zh.md)<br>
 Swagger Spring Boot Starter.
-Support jdk 1.8 or 1.8+,base on spring-boot 2.0+ and swagger2-2.9.2
+Support jdk 1.8,base on spring-boot 2.0+ and swagger2-2.9.2
 
 ## Installation
 Add the following dependence into your project and make sure that your project is using spring-boot 2.0+ version.
