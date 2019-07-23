@@ -1,6 +1,6 @@
 {
   "hints": [
-        {
+    {
       "name": "swagger.docket.produces",
       "type": "java.util.Set<java.lang.String>",
       "values": [
@@ -319,6 +319,12 @@
       "name": "swagger.print-init",
       "type": "java.lang.Boolean",
       "description": "true:打印所有docket初始化信息,false:禁用"
+    },
+    {
+      "sourceType": "io.github.swagger.SwaggerAutoConfiguration",
+      "name": "swagger.profiles",
+      "type": "java,util.Set<java.lang.String>",
+      "description": "特定profile环境才会进行初始化"
     },
     {
       "sourceType": "io.github.swagger.properties.ApiInfoProperties",

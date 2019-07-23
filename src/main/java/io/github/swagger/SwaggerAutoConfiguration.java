@@ -3,6 +3,7 @@ package io.github.swagger;
 
 import io.github.swagger.properties.DocketProperties;
 import io.github.swagger.properties.SecurityConfigurationProperties;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.AbstractRefreshableApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.util.CollectionUtils;
 import springfox.documentation.swagger.web.ApiResourceController;
 import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -22,6 +24,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -35,9 +38,8 @@ import java.util.Map;
 @EnableSwagger2
 @Slf4j
 @ConfigurationProperties("swagger")
-@ConditionalOnProperty(value = "swagger.enabled", havingValue = "true")
+@ConditionalOnProperty(value = "swagger.enabled", havingValue = "true", matchIfMissing = true)
 public class SwaggerAutoConfiguration implements ApplicationContextAware {
-
     /**
      * Bean factory for this context
      */
@@ -51,14 +53,18 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
     private String contextPath;
     @Value("${server.port:8080}")
     private String port;
+    @Setter
+    private List<String> profiles;
     private DocketProperties docket;
     private Map<String, DocketProperties> dockets;
     private SecurityConfigurationProperties securityConfiguration;
     private Boolean printInit = false;
     private DefaultResourcesProvider resourcesProvider;
+    private ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
         if (applicationContext instanceof AbstractRefreshableApplicationContext) {
             beanFactory = ((AbstractRefreshableApplicationContext) applicationContext).getBeanFactory();
         } else {
@@ -69,31 +75,20 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
 
     @PostConstruct
     public void init() throws NoSuchFieldException, IllegalAccessException {
+        // 若配置了swagger.profiles且与实际运行环境不一致则不初始化,不配则默认初始化
+        String[] activeProfiles = applicationContext.getEnvironment().getActiveProfiles();
+        if (!CollectionUtils.isEmpty(profiles) && !CollectionUtils.containsAny(profiles, Arrays.asList(activeProfiles))) {
+            return;
+        }
         if (securityConfiguration != null) {
             SecurityConfiguration configuration = securityConfiguration.toSecurityConfiguration();
             beanFactory.registerSingleton("swaggerSecurityConfiguration", configuration);
-            String[] names = beanFactory.getBeanNamesForType(ApiResourceController.class);
-            if (names.length == 1 && defaultListableBeanFactory != null) {
-                ApiResourceController apiResourceController = (ApiResourceController) defaultListableBeanFactory.getSingleton(names[0]);
-                defaultListableBeanFactory.destroySingleton(names[0]);
-                Field field = ApiResourceController.class.getDeclaredField("securityConfiguration");
-                field.setAccessible(true);
-                field.set(apiResourceController, configuration);
-                defaultListableBeanFactory.registerSingleton(names[0], apiResourceController);
-            }
+            registerSource("securityConfiguration", configuration);
         }
         if (resourcesProvider != null) {
-            String[] names = beanFactory.getBeanNamesForType(ApiResourceController.class);
-            if (names.length == 1 && defaultListableBeanFactory != null) {
-                ApiResourceController apiResourceController = (ApiResourceController) defaultListableBeanFactory.getSingleton(names[0]);
-                defaultListableBeanFactory.destroySingleton(names[0]);
-                Field field = ApiResourceController.class.getDeclaredField("swaggerResources");
-                field.setAccessible(true);
-                field.set(apiResourceController, resourcesProvider);
-                defaultListableBeanFactory.registerSingleton(names[0], apiResourceController);
-                log.info(resourcesProvider.toString());
-                swaggerUrl = "http://localhost:" + port + (contextPath + "/swagger-ui.html").replaceAll("//", "/");
-            }
+            registerSource("swaggerResources", resourcesProvider);
+            log.info(resourcesProvider.toString());
+            swaggerUrl = "http://localhost:" + port + (contextPath + "/swagger-ui.html").replaceAll("//", "/");
         }
         List<String> beanNameList = new ArrayList<>();
         if (dockets != null && dockets.size() > 0) {
@@ -104,6 +99,18 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
         }
         log.info(String.format("%sinitialization completed, swagger url: %s",
                 beanNameList.isEmpty() ? "" : beanNameList.toString() + " ", swaggerUrl));
+    }
+
+    private void registerSource(String fieldName, Object fieldValue) throws NoSuchFieldException, IllegalAccessException {
+        String[] names = beanFactory.getBeanNamesForType(ApiResourceController.class);
+        if (names.length == 1 && defaultListableBeanFactory != null) {
+            ApiResourceController apiResourceController = (ApiResourceController) defaultListableBeanFactory.getSingleton(names[0]);
+            defaultListableBeanFactory.destroySingleton(names[0]);
+            Field field = ApiResourceController.class.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            field.set(apiResourceController, fieldValue);
+            defaultListableBeanFactory.registerSingleton(names[0], apiResourceController);
+        }
     }
 
     /**

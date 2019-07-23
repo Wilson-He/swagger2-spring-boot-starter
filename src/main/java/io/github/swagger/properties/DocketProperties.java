@@ -28,8 +28,8 @@ import java.util.stream.IntStream;
 @Setter
 @ToString
 public class DocketProperties {
-    public final static String DEFAULT_DOCKET = "docket";
-    private final static String LANGUAGE_EN = "en";
+    public static final String DEFAULT_DOCKET = "swagger_docket";
+    private static final String LANGUAGE_EN = "en";
     /**
      * 路径映射,默认"/"
      */

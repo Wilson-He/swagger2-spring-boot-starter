@@ -52,7 +52,7 @@ public class ResponseMessageProperties {
         this.message = defaultIfAbsent(message, this.message);
     }
 
-    static{
+    static {
         DEFAULT_EN_MESSAGES.add(new ResponseMessageProperties(401, "Unauthorized").toResponseMessage(null));
         DEFAULT_EN_MESSAGES.add(new ResponseMessageProperties(403, "Forbidden").toResponseMessage(null));
         DEFAULT_EN_MESSAGES.add(new ResponseMessageProperties(404, "Page Not Found").toResponseMessage(null));
