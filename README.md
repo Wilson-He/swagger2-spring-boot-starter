@@ -16,6 +16,7 @@
 - swagger
    - print-init(extra)
    - enabled(extra)
+   - profiles(extra)
    - security-configuration
      - properties(client-id,client-secret,scope-separator...)
    - dockets(extra)
@@ -62,6 +63,7 @@
 ![输出初始化信息](https://img-blog.csdnimg.cn/20181114201529513.png)
 
 - swagger.enabled:是否开启swagger自动化配置(为了保留之前的配置但不开启配置而添加了该配置项)
+- swagger.profiles:指定profile环境下才会生成文档
 - swagger.dockets:用于配置多个docket，属性内容与docket相同,若该配置项存在将覆盖docket配置，base-package须填，否则将报NullPointException，example:
    - swagger:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;dockets:<br>
