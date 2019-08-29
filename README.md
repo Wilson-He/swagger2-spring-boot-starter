@@ -1,8 +1,7 @@
 # swagger2-spring-boot-starter自动化配置框架([版本更新信息](https://github.com/Wilson-He/swagger2-spring-boot-starter/blob/master/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E4%BF%A1%E6%81%AF.md))
 
 ## 简介
-该框架基于swagger2-2.9.2与SpringBoot-2.0.1版本进行搭建,兼容SpringBoot2.x以上版本,不兼容1.x版本
-[详细博客文章](https://blog.csdn.net/z28126308/article/details/84187221)
+该框架基于swagger2-2.9.2与SpringBoot-2.0.1版本进行搭建,兼容SpringBoot2.x以上版本,不兼容1.x版本([详细博客文章](https://blog.csdn.net/z28126308/article/details/84187221))
 ## 依赖添加
 
 	<dependency>
