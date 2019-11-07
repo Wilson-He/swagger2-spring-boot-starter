@@ -1,4 +1,3 @@
-@[toc]
 ## 1. 简介
 该框架基于swagger2-2.9.2与SpringBoot-2.0.1版本进行搭建,兼容SpringBoot2.x以上版本,不兼容1.x版本,maven依赖如下:
 
