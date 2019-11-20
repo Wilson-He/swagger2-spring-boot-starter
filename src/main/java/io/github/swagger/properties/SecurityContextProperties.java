@@ -2,6 +2,7 @@ package io.github.swagger.properties;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.Lists;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.http.HttpMethod;
@@ -28,7 +29,7 @@ public class SecurityContextProperties {
     /**
      * http请求方法,or数组相或,[GET,PUT,POST,DELETE,HEAD...],{@link org.springframework.http.HttpMethod}
      */
-    private List<HttpMethod> methodSelectors;
+    private List<HttpMethod> methodSelectors = Lists.newArrayList(HttpMethod.PUT, HttpMethod.GET, HttpMethod.POST, HttpMethod.DELETE);
 
     public SecurityContext toSecurityContext() {
         Predicate<HttpMethod> httpMethodPredicate = methodSelectors.stream()

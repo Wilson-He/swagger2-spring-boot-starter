@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.wilson-he</groupId>
     <artifactId>swagger2-spring-boot-starter</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>jar</packaging>
     <name>swagger2-spring-boot-starter</name>
     <url>https://github.com/Wilson-He/swagger2-spring-boot-starter</url>
@@ -17,7 +17,7 @@
     <scm>
         <connection>git@github.com:Wilson-He/swagger2-spring-boot-starter.git</connection>
         <url>https://github.com/Wilson-He/swagger2-spring-boot-starter</url>
-        <tag>swagger2-spring-boot-starter-1.0.5</tag>
+        <tag>swagger2-spring-boot-starter-1.0.6</tag>
     </scm>
     <licenses>
         <license>
@@ -46,6 +46,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>swagger-models</artifactId>
+                    <groupId>io.swagger</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
@@ -56,6 +62,14 @@
                     <artifactId>swagger-models</artifactId>
                     <groupId>io.swagger</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>swagger-annotations</artifactId>
+                    <groupId>io.swagger</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
         <!-- 由于1.5.20的字符串参数问题从而使用1.5.21 -->
@@ -63,6 +77,12 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-models</artifactId>
             <version>${swagger-models.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -71,21 +91,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>5.0.6.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.0.1.RELEASE</version>
+            <version>5.1.8.RELEASE</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
