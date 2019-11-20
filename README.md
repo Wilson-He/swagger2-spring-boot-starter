@@ -4,7 +4,7 @@
 		<dependency>
   			<groupId>io.github.wilson-he</groupId>
  			<artifactId>swagger2-spring-boot-starter</artifactId>
-  			<version>1.0.6</version>
+  			<version>1.1.0</version>
 		</dependency>
         
 ## 2. 配置
@@ -41,7 +41,7 @@
 	       - security-references
 	         - reference
 	         - scopes
-	     - security-schemas
+	     - security-schemes
 	       - api-key-list
 	       - basic-auth-list
 	       - oauth-list
@@ -174,7 +174,7 @@ application.yml
 		              global: accessEverything
 			# login接口无需Atoken
 		        path-selectors: "^(?!login).*$"
-		    security-schemas:
+		    security-schemes:
 		       # 全局token设置
 		      api-key-list:
 		          - name: Authorization
