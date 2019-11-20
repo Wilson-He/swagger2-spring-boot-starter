@@ -4,7 +4,7 @@
 		<dependency>
   			<groupId>io.github.wilson-he</groupId>
  			<artifactId>swagger2-spring-boot-starter</artifactId>
-  			<version>1.0.4</version>
+  			<version>1.0.6</version>
 		</dependency>
         
 ## 2. 配置
@@ -168,15 +168,16 @@ application.yml
 		        url: http://blog.csdn.net/z28126308/
 		    security-contexts:
 		      - security-references:
+		      # 全局token Authorization权限设置
 		          - reference: Authorization
 		            scopes:
 		              global: accessEverything
+			# login接口无需Atoken
 		        path-selectors: "^(?!login).*$"
-		        method-selectors: [GET, POST, PUT, DELETE]
 		    security-schemas:
-		      basic-auth-list: [basic-1,basic-2]
+		       # 全局token设置
 		      api-key-list:
-		          - name: query
+		          - name: Authorization
 		            key-name: Authorization
 		            pass-as: header
 		#      oauth-list:
