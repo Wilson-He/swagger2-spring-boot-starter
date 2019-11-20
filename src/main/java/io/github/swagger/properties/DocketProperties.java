@@ -86,7 +86,7 @@ public class DocketProperties {
     /**
      * 安全方案列表(basicAuth、oauth、apiKey)
      */
-    private SecuritySchemeProperties securitySchemas;
+    private SecuritySchemeProperties securitySchemes;
     /**
      * 忽略的参数类型
      */
@@ -169,7 +169,7 @@ public class DocketProperties {
     }
 
     private List<SecurityScheme> toSecuritySchemes() {
-        return securitySchemas == null ? Collections.emptyList() : securitySchemas.toSecuritySchemes();
+        return securitySchemes == null ? Collections.emptyList() : securitySchemes.toSecuritySchemes();
     }
 
     public String getHost() {

@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.wilson-he</groupId>
     <artifactId>swagger2-spring-boot-starter</artifactId>
-    <version>1.0.6</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
     <name>swagger2-spring-boot-starter</name>
     <url>https://github.com/Wilson-He/swagger2-spring-boot-starter</url>
@@ -17,7 +17,7 @@
     <scm>
         <connection>git@github.com:Wilson-He/swagger2-spring-boot-starter.git</connection>
         <url>https://github.com/Wilson-He/swagger2-spring-boot-starter</url>
-        <tag>swagger2-spring-boot-starter-1.0.6</tag>
+        <tag>swagger2-spring-boot-starter-1.1.0</tag>
     </scm>
     <licenses>
         <license>
