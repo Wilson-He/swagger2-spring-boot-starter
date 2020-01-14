@@ -66,12 +66,14 @@
 	- swagger.enabled:是否开启swagger自动化配置(不设置则默认初始化swagger docket)
 	- swagger.profiles:指定profile环境下才进行文档生成
 	-  swagger.dockets:用于配置多个docket，属性配置同docket,同时配置swagger.docket将一起生效，example:
-	   - swagger:
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dockets:
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-test: &nbsp;&nbsp;&nbsp;&nbsp;#注册一个beanName为docket-test的Docket到Spring容器中
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base-package: org.noslim.controller.test
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docket-order:&nbsp;&nbsp;#注册一个beanName为docket-order的Docket到Spring容器中
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base-package: org.noslim.controller.order
+	   <pre>
+	   swagger:
+	     dockets:
+	       docket-user:
+	         base-package: com.github.wilson.web.controller.user        
+	       docket-order:      
+	         base-package: com.github.wilson.web.controller.order 
+	   </pre>
 	- swagger.docket.path-selectors:swagger-ui上的路径选择器
 		- include-patterns:路径显示样式
 		- exclude-patterns:路径隐藏样式
@@ -134,10 +136,10 @@
 application.yml
 
 	swagger:
-	  print-init: true #非必需,默认false
+	  print-init: true #非必需,默认true,控制台打印swagger url
 	  enabled: true #非必需,默认true
 	  docket:
-	    base-package: org.noslim.web   #必需
+	    base-package: io.wilson.web   #必需
 	server:
 	  port: 8888   #非必需
 	  servlet:
