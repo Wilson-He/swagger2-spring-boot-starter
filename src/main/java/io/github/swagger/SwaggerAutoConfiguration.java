@@ -23,10 +23,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -80,28 +77,90 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
         if (!CollectionUtils.isEmpty(profiles) && !CollectionUtils.containsAny(profiles, Arrays.asList(activeProfiles))) {
             return;
         }
-        if (securityConfiguration != null) {
-            SecurityConfiguration configuration = securityConfiguration.toSecurityConfiguration();
-            beanFactory.registerSingleton("swaggerSecurityConfiguration", configuration);
-            registerSource("securityConfiguration", configuration);
+        if (hasDocket()) {
+            return;
         }
-        if (resourcesProvider != null) {
-            registerSource("swaggerResources", resourcesProvider);
-            log.info(resourcesProvider.toString());
-            swaggerUrl = "http://localhost:" + port + (contextPath + "/swagger-ui.html").replaceAll("//", "/");
+        registerSecurityConfiguration();
+        registerResourcesProvider();
+        registerDocket();
+
+    }
+
+    /**
+     * 判断是否已含Docket bean
+     *
+     * @return
+     */
+    private boolean hasDocket() {
+        if (beanFactory.containsBean(DocketProperties.DEFAULT_DOCKET)) {
+            return true;
         }
+        if (dockets == null || dockets.isEmpty()) {
+            return false;
+        }
+        Set<String> docketNames = dockets.keySet();
+        for (String name : docketNames) {
+            if (beanFactory.containsBean(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 注册Docket Bean
+     */
+    private void registerDocket() {
         List<String> beanNameList = new ArrayList<>();
         if (dockets != null && dockets.size() > 0) {
             dockets.forEach((beanName, properties) -> registerDocket(beanName, properties, beanNameList));
         }
-        if (docket != null) {
+        if (docket != null && !beanFactory.containsBean(DocketProperties.DEFAULT_DOCKET)) {
             registerDocket(DocketProperties.DEFAULT_DOCKET, docket, beanNameList);
+            beanFactory.destroyBean(docket);
         }
         log.info(String.format("%sinitialization completed, swagger url: %s",
                 beanNameList.isEmpty() ? "" : beanNameList.toString() + " ", swaggerUrl));
     }
 
-    private void registerSource(String fieldName, Object fieldValue) throws NoSuchFieldException, IllegalAccessException {
+    /**
+     * 注册Swagger SecurityConfiguration安全配置bean
+     *
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     */
+    private void registerSecurityConfiguration() throws NoSuchFieldException, IllegalAccessException {
+        if (securityConfiguration != null) {
+            SecurityConfiguration configuration = securityConfiguration.toSecurityConfiguration();
+            beanFactory.registerSingleton("swaggerSecurityConfiguration", configuration);
+            apiResourceControllerConfig("securityConfiguration", configuration);
+        }
+    }
+
+
+    /**
+     * 注册SwaggerResourcesProvider bean
+     *
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     */
+    private void registerResourcesProvider() throws NoSuchFieldException, IllegalAccessException {
+        if (resourcesProvider != null) {
+            apiResourceControllerConfig("swaggerResources", resourcesProvider);
+            log.info(resourcesProvider.toString());
+            swaggerUrl = "http://localhost:" + port + (contextPath + "/swagger-ui.html").replaceAll("//", "/");
+        }
+    }
+
+    /**
+     * ApiResourceController bean属性配置
+     *
+     * @param fieldName
+     * @param fieldValue
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     */
+    private void apiResourceControllerConfig(String fieldName, Object fieldValue) throws NoSuchFieldException, IllegalAccessException {
         String[] names = beanFactory.getBeanNamesForType(ApiResourceController.class);
         if (names.length == 1 && defaultListableBeanFactory != null) {
             ApiResourceController apiResourceController = (ApiResourceController) defaultListableBeanFactory.getSingleton(names[0]);
