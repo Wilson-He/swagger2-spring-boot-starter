@@ -83,7 +83,6 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
         registerSecurityConfiguration();
         registerResourcesProvider();
         registerDocket();
-
     }
 
     /**
@@ -114,10 +113,11 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
         List<String> beanNameList = new ArrayList<>();
         if (dockets != null && dockets.size() > 0) {
             dockets.forEach((beanName, properties) -> registerDocket(beanName, properties, beanNameList));
-        }
-        if (docket != null && !beanFactory.containsBean(DocketProperties.DEFAULT_DOCKET)) {
-            registerDocket(DocketProperties.DEFAULT_DOCKET, docket, beanNameList);
-            beanFactory.destroyBean(docket);
+        } else if (!beanFactory.containsBean(DocketProperties.DEFAULT_DOCKET)) {
+            registerDocket(DocketProperties.DEFAULT_DOCKET, docket != null ? docket : new DocketProperties(), beanNameList);
+            if (docket != null) {
+                beanFactory.destroyBean(docket);
+            }
         }
         log.info(String.format("%sinitialization completed, swagger url: %s",
                 beanNameList.isEmpty() ? "" : beanNameList.toString() + " ", swaggerUrl));

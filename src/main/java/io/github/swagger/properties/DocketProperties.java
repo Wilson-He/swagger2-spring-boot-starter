@@ -106,7 +106,7 @@ public class DocketProperties {
                     .filter(i -> i % 2 == 0)
                     .forEach(i -> docket.directModelSubstitute(directModelSubstitutes.get(i), directModelSubstitutes.get(i + 1)));
         }
-        docket.pathMapping(pathMapping)
+        return docket.pathMapping(pathMapping)
                 .genericModelSubstitutes(Optional.ofNullable(genericModelSubstitutes).orElse(new Class[0]))
                 .pathProvider(Objects.equals(DEFAULT_DOCKET, beanName) ? new DefaultPathProvider(contextPath) : null)
                 .groupName(groupName)
@@ -121,9 +121,9 @@ public class DocketProperties {
                 .globalResponseMessage(RequestMethod.PUT, responseMessages)
                 .globalResponseMessage(RequestMethod.POST, responseMessages)
                 .globalResponseMessage(RequestMethod.DELETE, responseMessages)
-                .ignoredParameterTypes(Optional.ofNullable(ignoredParameterTypes).orElse(new Class[0]));
-        return basePackage == null ? docket : docket.select()
-                .apis(RequestHandlerSelectors.basePackage(basePackage))
+                .ignoredParameterTypes(Optional.ofNullable(ignoredParameterTypes).orElse(new Class[0]))
+                .select()
+                .apis(basePackage == null ? RequestHandlerSelectors.any() : RequestHandlerSelectors.basePackage(basePackage))
                 .paths(toPathSelector())
                 .build();
     }
@@ -137,9 +137,9 @@ public class DocketProperties {
                 .collect(Collectors.toList());
     }
 
-    private Predicate<String> toPathSelector() {
+    private Predicate toPathSelector() {
         if (pathSelectors == null || pathSelectors.isEmpty()) {
-            return PathSelectors.any();
+            return Predicates.or(PathSelectors.regex("^(?!/error).*$"));
         }
         Predicate includePaths = pathSelectors.getIncludePatterns()
                 .stream()
