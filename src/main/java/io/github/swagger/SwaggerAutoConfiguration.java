@@ -120,7 +120,7 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
             }
         }
         log.info(String.format("%s init completed, url: %s",
-                beanNameList.isEmpty() ? "" : beanNameList.toString() + " ", swaggerUrl));
+                beanNameList.isEmpty() ? "" : beanNameList.toString(), swaggerUrl));
     }
 
     /**
