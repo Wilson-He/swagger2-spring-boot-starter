@@ -119,7 +119,7 @@ public class SwaggerAutoConfiguration implements ApplicationContextAware {
                 beanFactory.destroyBean(docket);
             }
         }
-        log.info(String.format("%sinitialization completed, swagger url: %s",
+        log.info(String.format("%s init completed, url: %s",
                 beanNameList.isEmpty() ? "" : beanNameList.toString() + " ", swaggerUrl));
     }
 
