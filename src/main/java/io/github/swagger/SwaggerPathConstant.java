@@ -8,11 +8,13 @@ import java.util.List;
  */
 public interface SwaggerPathConstant {
     String[] PATHS = new String[]{
+            "/error",
             "/swagger-resources/configuration/ui",
             "/swagger-resources/configuration/security",
             "/swagger-resources",
             "/v3/api-docs"};
     List<String> PATH_LIST = Arrays.asList(
+            "/error",
             "/swagger-resources/configuration/ui",
             "/swagger-resources/configuration/security",
             "/swagger-resources",
